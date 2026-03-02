@@ -2,6 +2,10 @@
 
 A fully client-side CV editor with live PDF preview, built with vanilla JavaScript. No server, no installation, no account — just open the HTML file in a browser.
 
+## Demo
+A live demo is available [here](https://markuspetaja.github.io/CV-Editor/)
+> **Note:** Currently works properly on desktop only
+
 ## Features
 
 - **Live PDF Preview** — see your changes rendered in real time using [pdf-lib](https://pdf-lib.js.org/)
