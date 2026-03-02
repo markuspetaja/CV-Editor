@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Node (if a dev server is ever added)
+node_modules/
+
+# Local screenshots (not committed)
+screenshot.png

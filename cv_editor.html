@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Editor</title>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="editor-pane">
+      <div class="header-bar">
+        <h2 class="app-title">CV Editor</h2>
+        <div class="header-controls">
+           <span id="statusBar" class="status-pill status-ready">Ready</span>
+           <button class="header-icon-btn" id="themeToggle" title="Toggle Theme">☀</button>
+           <button class="header-icon-btn" id="dimmerToggle" title="Toggle Dimmer">🌗</button>
+           <span class="global-help" title="Formatting: *bold*, _italic_, ~underline~, - bullet">?</span>
+        </div>
+      </div>
+
+      <div class="tabs" id="tabBar">
+        <button class="tab-btn active" data-tab="content">&#x270F;&#xFE0F; Content</button>
+        <button class="tab-btn" data-tab="style">🎨 Design</button>
+        <button class="tab-btn" data-tab="ai">🤖 AI</button>
+        <button class="tab-btn" data-tab="file">📁 Files</button>
+        <button class="tab-btn" data-tab="history">🕐 History</button>
+      </div>
+
+      <div class="editor-scroll">
+        <!-- CONTENT TAB -->
+        <div id="tab-content" class="tab-content active">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Full Name" />
+          </div>
+
+          <div class="form-group">
+            <label>Profile Photo</label>
+            <div class="custom-file-row">
+              <label for="profileInput" class="btn-skeleton-file" id="fileLabel">＋ Add Photo</label>
+              <input type="file" id="profileInput" accept="image/png, image/jpeg" style="display: none;" />
+              <button id="removeImgBtn" class="btn-remove-tiny" title="Remove Photo" style="display: none;">-</button>
+            </div>
+          </div>
+
+          <!-- Job Titles -->
+          <div class="form-group">
+            <label>Job Titles</label>
+            <div id="titles-container"></div>
+            <div class="btn-skeleton" data-action="add-personal" data-field="titles">＋ Add Title</div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="form-group">
+            <label>Contact Info</label>
+            <div id="contacts-container"></div>
+            <div class="btn-skeleton" data-action="add-personal" data-field="contacts">＋ Add Contact</div>
+          </div>
+
+          <!-- Online Links -->
+          <div class="form-group">
+            <label>Online Links</label>
+            <div id="links-container"></div>
+            <div class="btn-skeleton" data-action="add-personal" data-field="links">＋ Add Link</div>
+          </div>
+
+          <hr />
+
+          <div id="sections-container">
+              <!-- Dynamic Sections rendered by UI -->
+          </div>
+
+          <div class="section-adder" id="sectionAdder">
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="text">＋ Text</button>
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="list">＋ List</button>
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="condensed">＋ Condensed</button>
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="tags">＋ Tags</button>
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="table">＋ Table</button>
+            <button class="btn-skeleton-inline" data-action="add-section" data-type="achievements">＋ Achieve</button>
+          </div>
+        </div>
+
+        <!-- DESIGN TAB -->
+        <div id="tab-style" class="tab-content">
+          <div class="form-group">
+            <label>Font Family</label>
+            <select id="fontSelection">
+              <option value="Helvetica">Helvetica (Modern, Standard)</option>
+              <option value="TimesRoman">Times New Roman (Traditional)</option>
+              <option value="Courier">Courier (Technical)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Size Scale</label>
+            <select id="sizeScale">
+              <option value="compact">Compact</option>
+              <option value="normal" selected>Normal</option>
+              <option value="spacious">Spacious</option>
+            </select>
+          </div>
+
+          <div class="design-row">
+            <div class="form-group">
+              <label>Page Size</label>
+              <select id="pageSize">
+                <option value="A4" selected>A4</option>
+                <option value="Letter">Letter</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Margins</label>
+              <select id="margins">
+                <option value="tight">Tight</option>
+                <option value="normal" selected>Normal</option>
+                <option value="wide">Wide</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="design-row">
+            <div class="form-group">
+              <label>Section Divider</label>
+              <select id="dividerStyle">
+                <option value="none">None</option>
+                <option value="line" selected>Thin Line</option>
+                <option value="bar">Accent Bar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Photo Shape</label>
+              <select id="photoShape">
+                <option value="none">No Photo</option>
+                <option value="square">Square</option>
+                <option value="rounded">Rounded</option>
+                <option value="circle">Circle</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Color Presets</label>
+            <select id="paletteSelect">
+              <option value="custom">Custom</option>
+              <option value="grayscale">Monochrome / Gray (Clean)</option>
+              <option value="navy">Classic Navy (Professional)</option>
+              <option value="corporate">Corporate (Trustworthy)</option>
+              <option value="academic">Modern Academic (Warm)</option>
+              <option value="minimal">Minimal Luxury (Trendy)</option>
+              <option value="mint">Mint Accent (Creative)</option>
+            </select>
+          </div>
+
+          <label style="display: block; margin-bottom: 10px">Color Palette</label>
+          <div class="style-palette">
+            <div class="color-control">
+              <label>Name</label>
+              <input type="color" id="col-name" value="#005371" />
+            </div>
+            <div class="color-control">
+              <label>Headers</label>
+              <input type="color" id="col-header" value="#005371" />
+            </div>
+            <div class="color-control">
+              <label>Roles</label>
+              <input type="color" id="col-role" value="#333333" />
+            </div>
+            <div class="color-control">
+              <label>Body</label>
+              <input type="color" id="col-body" value="#666666" />
+            </div>
+            <div class="color-control">
+              <label>Bullets</label>
+              <input type="color" id="col-accent" value="#333333" />
+            </div>
+          </div>
+        </div>
+
+        <!-- AI TAB -->
+        <div id="tab-ai" class="tab-content">
+          <div class="form-group">
+            <label>API Provider</label>
+            <select id="aiProvider">
+              <option value="openai">OpenAI</option>
+              <option value="gemini">Google Gemini</option>
+              <option value="anthropic">Anthropic (Claude)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Model</label>
+            <input type="text" id="aiModel" list="aiModelSuggestions" placeholder="e.g. gpt-4o, claude-sonnet-4-20250514" />
+            <datalist id="aiModelSuggestions"></datalist>
+          </div>
+          <div class="form-group">
+            <label>API Key</label>
+            <input type="password" id="aiApiKey" placeholder="Enter your API key..." />
+            <small style="color:#666">Stored locally. Never sent anywhere except the provider's API.</small>
+          </div>
+          <hr />
+          <div class="form-group">
+            <label>Job Description</label>
+            <textarea id="aiJobDescription" class="auto-grow" placeholder="Paste the full job description here..." style="min-height:120px;"></textarea>
+          </div>
+          <div id="aiEstimate" class="ai-estimate">
+            <span id="aiEstimateText">Select a model and paste a job description to see cost estimate</span>
+          </div>
+          <div class="ai-actions">
+            <button class="btn-action" id="aiAnalyze">🔍 Keyword Analysis</button>
+            <button class="btn-action" id="aiRewriteSummary">✍️ Rewrite Summary</button>
+            <button class="btn-action" id="aiCheckCliches">🚫 Cliché Check</button>
+            <button class="btn-action btn-secondary" id="aiRescan" title="Re-run analysis with saved JD">🔄 Re-scan</button>
+          </div>
+          <div id="aiMatchScoreBar" class="match-score-container" style="display:none;">
+            <div class="match-score-header">
+              <span>ATS Match Score</span>
+              <strong id="aiMatchScoreValue">0%</strong>
+            </div>
+            <div class="match-score-track">
+              <div class="match-score-fill" id="aiMatchScoreFill" style="width:0%"></div>
+            </div>
+            <div class="match-score-dots" id="aiMatchScoreDots"></div>
+          </div>
+          <div id="aiCostBar" class="ai-cost-bar" style="display:none;">
+            <div class="ai-cost-last">
+              <span id="aiLastModel"></span>
+              <span id="aiLastTokens"></span>
+              <span id="aiLastCost"></span>
+            </div>
+            <div class="ai-cost-session">
+              Session: <strong id="aiSessionTokens">0</strong> tokens · <strong id="aiSessionCost">Free</strong>
+              (<span id="aiSessionCalls">0</span> calls)
+              <button class="btn-reset-sm" id="aiResetSession" title="Reset session counter">↺</button>
+            </div>
+          </div>
+          <div id="aiResults" class="ai-results" style="display:none;"></div>
+          <hr />
+          <details class="ai-history-details">
+            <summary>📜 AI History <span id="aiHistoryCount" class="badge badge-sm">0</span></summary>
+            <div id="aiHistoryPanel" class="ai-history-panel"></div>
+            <button class="btn-action btn-sm btn-danger" id="aiClearHistory" style="margin-top:8px;">Clear History</button>
+          </details>
+        </div>
+
+        <!-- FILES TAB -->
+        <div id="tab-file" class="tab-content">
+          <div class="form-group">
+            <label>Current Variant</label>
+            <div class="variant-bar">
+              <select id="variantSelect"></select>
+              <button class="btn-action btn-sm" id="btnNewVariant" title="New Variant">＋</button>
+              <button class="btn-action btn-sm" id="btnRenameVariant" title="Rename">✏️</button>
+              <button class="btn-action btn-sm" id="btnDuplicateVariant" title="Duplicate Variant">📋</button>
+              <button class="btn-action btn-sm btn-reset" id="btnDeleteVariant" title="Delete">🗑️</button>
+            </div>
+          </div>
+
+          <div class="file-actions-grid">
+            <button class="btn-action" id="btnSaveJSON">💾 Save Project (.json)</button>
+            <button class="btn-action" id="btnLoadJSON">📂 Load Project (.json)</button>
+            <button class="btn-action" style="background:#17a2b8" id="btnATSPreview">👁️ ATS Preview</button>
+            <button class="btn-action btn-reset" id="btnResetAll">🗑️ Reset All</button>
+            <input type="file" id="loadJsonInput" accept=".json" style="display: none" />
+          </div>
+
+          <button class="btn-download" id="btnDownloadPDF">Download PDF</button>
+
+          <details class="metadata-details">
+            <summary>Advanced Document Properties</summary>
+            <div class="ats-tip" style="margin-top: 10px">
+              <strong>Control Internal PDF Properties:</strong> These fields help with SEO and ATS parsing.
+            </div>
+            <div class="form-group">
+              <label>Download Filename</label>
+              <input type="text" id="metaFileName" placeholder="e.g. cv-jane-doe" />
+            </div>
+            <hr />
+            <div class="form-group">
+              <label>Document Title</label>
+              <input type="text" id="metaTitle" placeholder="Auto-generated if empty" />
+            </div>
+            <div class="meta-grid">
+              <div class="form-group">
+                <label>Author</label>
+                <input type="text" id="metaAuthor" placeholder="Auto-generated" />
+              </div>
+              <div class="form-group">
+                <label>Subject</label>
+                <input type="text" id="metaSubject" placeholder="Resume / CV" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Keywords (ATS)</label>
+              <input type="text" id="metaKeywords" placeholder="e.g. Java, Agile, Sales" />
+            </div>
+            <div class="meta-grid">
+              <div class="form-group">
+                <label>Creator Tool</label>
+                <input type="text" id="metaCreator" placeholder="PDF-Lib CV Editor" />
+              </div>
+              <div class="form-group">
+                <label>Producer</label>
+                <input type="text" id="metaProducer" placeholder="PDF-Lib" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Language Code</label>
+              <input type="text" id="metaLang" value="en-US" placeholder="en-US" />
+            </div>
+          </details>
+        </div>
+
+        <!-- HISTORY TAB -->
+        <div id="tab-history" class="tab-content">
+          <div class="form-group">
+            <label>Snapshot Label (optional)</label>
+            <div class="variant-bar">
+              <input type="text" id="snapshotLabel" placeholder="e.g. Before AI rewrite" />
+              <button class="btn-action btn-sm" id="btnSnapshot" title="Save Snapshot">📸</button>
+            </div>
+          </div>
+          <hr />
+          <div id="snapshotsList" class="snapshots-list">
+            <p style="color:#666;font-size:0.85rem;">No snapshots yet.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="preview-pane" id="previewPane">
+      <iframe id="pdf-preview-1" class="active" title="PDF Preview 1"></iframe>
+      <iframe id="pdf-preview-2" title="PDF Preview 2"></iframe>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/schema.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/rich-text.js"></script>
+    <script src="js/keyboard.js"></script>
+    <script src="js/pdf-renderer.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

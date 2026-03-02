@@ -1,0 +1,345 @@
+{
+    "schemaVersion": 5,
+    "font": "Helvetica",
+    "sizeScale": "normal",
+    "pageSize": "A4",
+    "margins": "normal",
+    "dividerStyle": "line",
+    "photoShape": "none",
+    "photoPosition": "top-right",
+    "meta": {
+        "fileName": "jane-doe-cv",
+        "title": "Jane Doe — Senior Software Engineer",
+        "author": "Jane Doe",
+        "subject": "Resume / CV",
+        "keywords": "Software Engineer, JavaScript, Python, AWS, React, Node.js",
+        "creator": "CV Editor",
+        "producer": "PDF-Lib",
+        "lang": "en-US"
+    },
+    "personal": {
+        "name": "Jane Doe",
+        "titles": [
+            "Senior Software Engineer",
+            "Full-Stack Developer"
+        ],
+        "contacts": [
+            "jane.doe@example.com",
+            "+1 (555) 000-0000",
+            "New York, NY"
+        ],
+        "links": [
+            "linkedin.com/in/janedoe",
+            "github.com/janedoe",
+            "janedoe.dev"
+        ]
+    },
+    "sections": [
+        {
+            "id": "s-101",
+            "type": "text",
+            "title": "SUMMARY",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": "Results-driven full-stack engineer with 7+ years of experience designing and shipping scalable web applications. Deep expertise in JavaScript, Python, and cloud-native architecture on AWS. Known for bridging technical and product teams to deliver high-quality software on time. Passionate about clean code, developer experience, and mentoring junior engineers.",
+            "items": null
+        },
+        {
+            "id": "s-102",
+            "type": "tags",
+            "title": "SKILLS",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": null,
+            "items": [
+                {
+                    "id": "t-01",
+                    "tag": "JavaScript",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-02",
+                    "tag": "TypeScript",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-03",
+                    "tag": "React",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-04",
+                    "tag": "Node.js",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-05",
+                    "tag": "Python",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-06",
+                    "tag": "AWS",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-07",
+                    "tag": "Docker",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-08",
+                    "tag": "PostgreSQL",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-09",
+                    "tag": "Redis",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-10",
+                    "tag": "GraphQL",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-11",
+                    "tag": "Git",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-12",
+                    "tag": "Agile / Scrum",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-13",
+                    "tag": "CI/CD",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "t-14",
+                    "tag": "Terraform",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "key": "",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "id": "s-103",
+            "type": "list",
+            "title": "EXPERIENCE",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": null,
+            "items": [
+                {
+                    "id": "e-01",
+                    "l1": "Senior Software Engineer",
+                    "l2": "Jan 2021 — Present",
+                    "l3": "Acme Corp · New York, NY",
+                    "desc": "- Led a cross-functional team of 6 to redesign the core payment platform, reducing failed transaction rate by 34%.\n- Architected a microservices migration from a monolithic Rails app to Node.js + AWS Lambda, cutting infrastructure costs by $120k/year.\n- Introduced automated integration testing (Jest + Playwright), raising test coverage from 48% to 91%.\n- Mentored 3 mid-level engineers through technical design reviews and pair programming sessions.",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "e-02",
+                    "l1": "Software Engineer",
+                    "l2": "Jun 2018 — Dec 2020",
+                    "l3": "WebCorp LLC · Remote",
+                    "desc": "- Built and maintained full-stack features for a SaaS e-commerce platform serving 200k+ monthly active users.\n- Optimised PostgreSQL query performance, reducing average page load time by 40%.\n- Developed an internal analytics dashboard (React + D3.js) used daily by the product and marketing teams.\n- Contributed to on-call rotation and incident response; reduced mean time to recovery by 25%.",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "e-03",
+                    "l1": "Junior Developer",
+                    "l2": "Sep 2016 — May 2018",
+                    "l3": "StartupXYZ · Boston, MA",
+                    "desc": "- Implemented RESTful API endpoints in Python/Flask consumed by iOS and Android clients.\n- Collaborated with UX designers to build responsive front-end components in React.\n- Set up the company's first CI/CD pipeline using GitHub Actions and Heroku.",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "id": "s-104",
+            "type": "list",
+            "title": "EDUCATION",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": null,
+            "items": [
+                {
+                    "id": "edu-01",
+                    "l1": "BSc Computer Science",
+                    "l2": "2012 — 2016",
+                    "l3": "Massachusetts Institute of Technology",
+                    "desc": "Graduated with Honours (GPA 3.9). Capstone: Distributed fault-tolerant key-value store in Go. Teaching assistant for Algorithms (6.006).",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "id": "s-105",
+            "type": "condensed",
+            "title": "PROJECTS",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": null,
+            "items": [
+                {
+                    "id": "p-01",
+                    "l1": "OpenMetrics",
+                    "l2": "2023",
+                    "l3": "github.com/janedoe/openmetrics",
+                    "desc": "Open-source real-time dashboard for aggregating server metrics. 1.4k GitHub stars. Built with React, WebSockets, and InfluxDB.",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                },
+                {
+                    "id": "p-02",
+                    "l1": "BudgetFlow",
+                    "l2": "2022",
+                    "l3": "budgetflow.app",
+                    "desc": "Personal finance tracker with AI-powered categorisation. Built with Next.js and OpenAI API. 8k monthly active users.",
+                    "tag": "",
+                    "key": "",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "id": "s-106",
+            "type": "table",
+            "title": "LANGUAGES",
+            "isVisible": true,
+            "spacing": "normal",
+            "color": null,
+            "content": null,
+            "items": [
+                {
+                    "id": "l-01",
+                    "key": "English",
+                    "value": "Native",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "tag": ""
+                },
+                {
+                    "id": "l-02",
+                    "key": "Spanish",
+                    "value": "Professional working proficiency",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "tag": ""
+                },
+                {
+                    "id": "l-03",
+                    "key": "French",
+                    "value": "Elementary",
+                    "l1": "",
+                    "l2": "",
+                    "l3": "",
+                    "desc": "",
+                    "tag": ""
+                }
+            ]
+        }
+    ],
+    "colors": {
+        "name": "#005371",
+        "header": "#005371",
+        "role": "#333333",
+        "body": "#666666",
+        "accent": "#333333"
+    },
+    "image": null,
+    "jobDescription": "",
+    "aiHistory": [],
+    "aiMatchScores": []
+}
