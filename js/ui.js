@@ -714,28 +714,32 @@ const UI = (() => {
             text += '-'.repeat((sec.title || '').length) + '\n';
 
             if (sec.type === SECTION_TYPES.TEXT) {
-                text += `${sec.content || ''}\n\n`;
+                text += `${(sec.content || '').trim()}\n\n`;
             } else if (sec.type === SECTION_TYPES.TAGS) {
-                const tags = (sec.items || []).map(i => i.tag).filter(t => t);
+                const tags = (sec.items || []).map(i => (i.tag || '').trim()).filter(t => t);
                 text += tags.join(', ') + '\n\n';
             } else if (sec.type === SECTION_TYPES.TABLE) {
-                (sec.items || []).forEach(i => { text += `${i.key}: ${i.value}\n`; });
+                (sec.items || []).forEach(i => { text += `${(i.key || '').trim()}: ${(i.value || '').trim()}\n`; });
                 text += '\n';
             } else if (sec.type === SECTION_TYPES.CONDENSED) {
                 (sec.items || []).forEach(i => {
-                    const parts = [i.l1, i.l3, i.desc?.replace(/\n/g, ' ')].filter(p => p);
+                    const parts = [(i.l1 || '').trim(), (i.l3 || '').trim(), (i.desc || '').trim().replace(/\n/g, ' ')].filter(p => p);
                     text += parts.join(' • ');
-                    if (i.l2) text += ` (${i.l2})`;
+                    if (i.l2) text += ` (${(i.l2 || '').trim()})`;
                     text += '\n';
                 });
                 text += '\n';
             } else if (sec.type === SECTION_TYPES.ACHIEVEMENTS) {
-                (sec.items || []).forEach((i, idx) => { text += `${idx + 1}. ${i.desc || ''}\n`; });
+                (sec.items || []).forEach((i, idx) => { text += `${idx + 1}. ${(i.desc || '').trim()}\n`; });
                 text += '\n';
             } else {
                 // List
                 (sec.items || []).forEach(i => {
-                    text += `${i.l1} | ${i.l2}\n${i.l3}\n${i.desc || ''}\n\n`;
+                    const parts = [];
+                    if (i.l1 || i.l2) parts.push([i.l1, i.l2].filter(Boolean).map(s => s.trim()).join(' | '));
+                    if (i.l3) parts.push(i.l3.trim());
+                    if (i.desc) parts.push(i.desc.trim());
+                    text += parts.join('\n') + '\n\n';
                 });
             }
         });
